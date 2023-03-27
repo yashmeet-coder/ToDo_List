@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="box" id="heading">
+
+        <h1>
+            <%=kindOfDay%>
+        </h1>
+    </div>
+    <div class="box">
+        <%newItems.forEach(function(task){%>
+            <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" id="checkbox" name="deletedTask" value="<%=task._id%>" onchange="this.form.submit()">
+                <p>
+                    <%= task.task %>
+                </p>
+            </div>
+            </form>
+            <%})%>
+                <form class="item" action="/" method="post">
+                    <input type="text" name="nextTask" id="next" placeholder="Next Task" autocomplete="off">
+                    <button type="submit" name="button" onclick="validateInput()">+</button>
+                </form>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
